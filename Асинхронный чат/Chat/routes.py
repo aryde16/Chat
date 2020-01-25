@@ -1,10 +1,9 @@
 from chat.views import ChatList, WebSocket
-from auth.views import Login,SingIn,SingOut
-
+from auth.views import Login,SignIn,SignOut
 routes = [
     ('GET','/',         ChatList,   'main'),
     ('GET','/ws',       WebSocket,  'chat'),
-    ('*',  '/login'     Login,      'login'),
-    ('*',  '/singin'    SingIn,     'singin'),
-    ('*','/singout'     SingOut,    'singout'),
+    ('*',  '/login',     Login,      'login'),
+    ('*',  '/singin',    SignIn,     'signin'),
+    ('*','/singout',     SignOut,    'signout'),
 ]

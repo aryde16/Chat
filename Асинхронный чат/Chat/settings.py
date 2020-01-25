@@ -17,11 +17,11 @@ if isfile('.evn'):
 
 DEBUG = env.bool('DEBUG', default = False)
 
-SITE_HOST = env.str('HOST')
-SITE_PORT = env.int('PORT')
-SECRET_KEY = evn.str('SECRET_KEY')
-MONGO_HOST = env.str('MONGO_HOST')
-MONGO_DB_NAME = env.str('MONGO_DB_NAME')
+SITE_HOST = env.str('HOST', default = False)
+SITE_PORT = env.int('PORT', default = False)
+SECRET_KEY = env.str('SECRET_KEY',default = False)
+MONGO_HOST = env.str('MONGO_HOST', default = 'localhost:27017')
+MONGO_DB_NAME = env.str('MONGO_DB_NAME',default = 'chat_test')
 
 MESSAGES = 'messages'
 USER_COLLECTION = 'users'

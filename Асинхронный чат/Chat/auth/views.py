@@ -45,7 +45,7 @@ class SignIn(web.View):
         session = await get_session(self.request)
         if session.get('user'):
             redirect(self.request, 'main')
-        return {'conten': 'Please enter your data'}
+        return {'content': 'Please enter your data'}
 
     async def post(self, **kw):
         data = await self.request.post()

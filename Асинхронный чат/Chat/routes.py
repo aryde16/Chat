@@ -4,6 +4,6 @@ routes = [
     ('GET','/',         ChatList,   'main'),
     ('GET','/ws',       WebSocket,  'chat'),
     ('*',  '/login',     Login,      'login'),
-    ('*',  '/singin',    SignIn,     'signin'),
-    ('*','/singout',     SignOut,    'signout'),
+    ('*',  '/signin',    SignIn,     'signin'),
+    ('*','/signout',     SignOut,    'signout'),
 ]

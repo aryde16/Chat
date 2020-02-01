@@ -12,8 +12,8 @@ class ChatList(web.View):
         
     async def get(self):
         message = Message(self.request.app.db)
-        messages = await megassage.get_messages()
-        return {'megassages':megassages}
+        messages = await message.get_messages()
+        return {'messages':messages}
 
 
 class WebSocket(web.View):
@@ -35,11 +35,11 @@ class WebSocket(web.View):
                     result = await message.save(user = login,msg = msg.data)
                     log.debug(result)
                     for _ws in self.request.app['websockets']:
-                        await _ws.send_str('{"user":"%s", "msg": "%s"}')
+                        await _ws.send_str(' {"user": %s} ' % user )
             elif msg.type == WSMsgType.ERROR:
                 log.debug('ws connection closed with exeption %s' % ws.exception())
-        self.request.app['websocket'].remove(ws)
-        for _ws in self.request.app['websocket']:
+        self.request.app['websockets'].remove(ws)
+        for _ws in self.request.app['websockets']:
             _ws.send_str('%s disconected' % login)
         log.debug('websocket conection closed')
         return ws

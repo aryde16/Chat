@@ -7,7 +7,7 @@ from aiohttp_session import get_session
 from auth.models import User
 
 def redirect(request, router_name):
-    url = request.app.router[router_name].url()
+    url = router_name #request.app.router[router_name].url()
     raise web.HTTPFound(url)
 
 def set_session(session, user_id, request):

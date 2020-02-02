@@ -35,7 +35,10 @@ class WebSocket(web.View):
                     result = await message.save(user = login,msg = msg.data)
                     log.debug(result)
                     for _ws in self.request.app['websockets']:
-                        await _ws.send_str(' {"user": %s} ' % user )
+                        '''
+                        Не работает форматирование все три варианта.
+                        '''
+                        await _ws.send_str(' {"user": "" , "msg": ""} ' )
             elif msg.type == WSMsgType.ERROR:
                 log.debug('ws connection closed with exeption %s' % ws.exception())
         self.request.app['websockets'].remove(ws)
